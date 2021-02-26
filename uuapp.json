@@ -1,0 +1,17 @@
+{
+  "product": "uu_tiles_example",
+  "version": "0.1.0",
+  "license": "License Commercial",
+  "description": {
+    "en": "",
+    "cs": ""
+  },
+  "devkit": {
+    "development": {
+      "appBoxLocationUri": "----- VALUE REQUIRED -----",
+      "appDeploymentUri": null
+    }
+  },
+  "uu_tiles_example-hi": {},
+  "uu_tiles_example-server": {}
+}
