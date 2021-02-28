@@ -6,7 +6,8 @@ import Plus4U5 from "uu_plus4u5g01";
 
 let Calls = {
   /** URL containing app base, e.g. "https://uuapp.plus4u.net/vendor-app-subapp/awid/". */
-  APP_BASE_URI: location.protocol + "//" + location.host + UU5.Environment.getAppBasePath(),
+  // APP_BASE_URI: location.protocol + "//" + location.host + UU5.Environment.getAppBasePath(),
+  APP_BASE_URI: "https://uuapp.plus4u.net/uu-jokes-maing01/4ef6a7b01b5942ecbfb925b249af987f/",
 
   async call(method, url, dtoIn, clientOptions) {
     let response = await Plus4U5.Common.Calls.call(method, url, dtoIn, clientOptions);
@@ -36,6 +37,46 @@ let Calls = {
   async initAndGetWorkspace(dtoInData) {
     await Calls.initWorkspace(dtoInData);
     return await Calls.getWorkspace();
+  },
+
+  load(dtoIn) {
+    console.log(dtoIn);
+    if (dtoIn.filterMap && dtoIn.filterMap.categoryIdList) {
+      dtoIn.categoryIdList = dtoIn.filterMap.categoryIdList.split(/,\s*/);
+    }
+    if (dtoIn.sorterList) {
+      let sorter = dtoIn.sorterList.find(sorter => sorter.key === "name" || sorter.key
+        === "rating");
+      if (sorter) {
+        dtoIn.sortBy = sorter.key;
+        dtoIn.order = sorter.ascending ? "asc" : "desc";
+      }
+    }
+    delete dtoIn.filterMap;
+    delete dtoIn.sorterList;
+
+    const commandUri = Calls.getCommandUri("joke/list");
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  loadItem(dtoIn) {
+    const commandUri = Calls.getCommandUri("joke/get");
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
+  updateItem(newData) {
+    const commandUri = Calls.getCommandUri("joke/update");
+    return Calls.call("post", commandUri, newData);
+  },
+
+  createItem(newData) {
+    const commandUri = Calls.getCommandUri("joke/create");
+    return Calls.call("post", commandUri, newData);
+  },
+
+  deleteItem(dtoIn) {
+    const commandUri = Calls.getCommandUri("joke/delete");
+    return Calls.call("post", commandUri, dtoIn);
   },
 
   /*

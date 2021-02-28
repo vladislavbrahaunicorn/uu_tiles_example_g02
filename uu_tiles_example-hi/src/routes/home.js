@@ -1,13 +1,13 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks";
-import { createVisualComponent } from "uu5g04-hooks";
-import Plus4U5 from "uu_plus4u5g01";
+import {createVisualComponent} from "uu5g04-hooks";
 import "uu_plus4u5g01-bricks";
 
 import Config from "./config/config.js";
-import Lsi from "../config/lsi.js";
-import WelcomeRow from "../bricks/welcome-row.js";
+import FlexTiles from "../bricks/flexTiles";
+import Joke from "../bricks/joke";
+import Calls from "../calls";
 //@@viewOff:imports
 
 const STATICS = {
@@ -22,13 +22,13 @@ const CLASS_NAMES = {
     max-width: 624px;
     margin: 0 auto;
     text-align: center;
-  
+
     ${UU5.Utils.ScreenSize.getMinMediaQueries("s", `text-align: left;`)}
-  
+
     .uu5-bricks-header {
       margin-top: 8px;
     }
-    
+
     .plus4u5-bricks-user-photo {
       margin: 0 auto;
     }
@@ -55,32 +55,36 @@ export const Home = createVisualComponent({
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
     return (
       <div {...attrs}>
-        <Plus4U5.App.ArtifactSetter territoryBaseUri="" artifactId="" />
-
-        <UU5.Bricks.Row className={CLASS_NAMES.welcomeRow()}>
-          <UU5.Bricks.Column colWidth="x-12 s-3">
-            <Plus4U5.Bricks.UserPhoto width="100px" />
-          </UU5.Bricks.Column>
-          <UU5.Bricks.Column colWidth="x-12 s-9">
-            <UU5.Bricks.Header level="2" content={<UU5.Bricks.Lsi lsi={Lsi.auth.welcome} />} />
-            <UU5.Common.Identity>
-              {({ identity }) => <UU5.Bricks.Header level="2" content={identity.name} />}
-            </UU5.Common.Identity>
-          </UU5.Bricks.Column>
-        </UU5.Bricks.Row>
-        <WelcomeRow textPadding="14px" icon="mdi-human-greeting">
-          <UU5.Bricks.Lsi lsi={Lsi.auth.intro} />
-        </WelcomeRow>
-        <WelcomeRow textPadding="10px" icon="mdi-monitor">
-          <UU5.Bricks.Lsi lsi={Lsi.auth.clientSide} />
-        </WelcomeRow>
-        <WelcomeRow textPadding="8px" icon="mdi-server">
-          <UU5.Bricks.Lsi lsi={Lsi.auth.serverSide} />
-        </WelcomeRow>
+        <FlexTiles
+          filters={[{
+            key: "categoryIdList", label: {en: "Category Id"}, component:
+              <UU5.Forms.Text tooltip="Insert category ids separated by a semilocon. E.g. 'id1,
+id2, id3'."/>
+          }]}
+          sorters={[{key: "name", label: {en: "Name"}}, {
+            key: "rating", label: {
+              en:
+                "Rating"
+            }
+          }]}
+          columns={[
+            {
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"}
+            },
+            {
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"}
+            }
+          ]}
+          tiles={Joke}
+          load={Calls.load}
+          reload={10000}
+        />
       </div>
     );
     //@@viewOff:render
-  },
+  }
 });
 
 export default Home;
