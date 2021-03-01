@@ -37,8 +37,9 @@ const CLASS_NAMES = {
 };
 const WithColumnsContextButton = createVisualComponent({
   render() {
-    const { openColumnsManager } = Uu5Tiles.useColumns();
-    return <UU5.Bricks.Button onClick={openColumnsManager}><UU5.Bricks.Icon icon="mdi-format-columns" /></UU5.Bricks.Button>;
+    const {openColumnsManager} = Uu5Tiles.useColumns();
+    return <UU5.Bricks.Button onClick={openColumnsManager}><UU5.Bricks.Icon
+      icon="mdi-format-columns"/></UU5.Bricks.Button>;
   }
 });
 
@@ -63,10 +64,31 @@ export const Home = createVisualComponent({
     return (
       <div {...attrs}>
         <FlexTiles
+          bulk={[
+              "showSelection",
+              {
+                content: {
+                  en: "Scratch",
+                  cs: "Podrbat"
+                },
+                onClick: (data) => console.log("Scratch", data),
+                active: true
+              },
+              {
+                content: {
+                  en: "Feed",
+                  cs: "Nakrmit"
+                },
+                onClick: (data) => console.log("Feed", data),
+                active: true
+              },
+              "resetSelection"
+            ]
+          }
           filters={[{
-            key: "categoryIdList", label: {en: "Category Id"}, component:
-              <UU5.Forms.Text tooltip="Insert category ids separated by a semilocon. E.g. 'id1,
-id2, id3'."/>
+            key: "categoryIdList", label: {en: "Category Id"},
+            component:
+              <UU5.Forms.Text/>
           }]}
           sorters={[{key: "name", label: {en: "Name"}}, {
             key: "rating", label: {
@@ -75,6 +97,15 @@ id2, id3'."/>
             }
           }]}
           columns={[
+            {
+              key: "selected",
+              cell: (data) => {
+                console.log(data);
+                return <UU5.Forms.Checkbox value={data.selected} onChange={data.toggleSelected} />
+              },
+              alwaysVisible: true,
+              label:{en: "Selected", cs: "Vyber"},
+            },
             {
               key: "name",
               cell: ({data}) => data.data.name,
@@ -93,8 +124,8 @@ id2, id3'."/>
             {
               key: "controls",
               cell: () => null,
-              header: <WithColumnsContextButton />,
-              label: { en: "Controls", cs: "Ovládací prvky" },
+              header: <WithColumnsContextButton/>,
+              label: {en: "Controls", cs: "Ovládací prvky"},
               width: 32,
               fixed: "right"
             }

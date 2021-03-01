@@ -27,13 +27,6 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-const WithColumnsContextButton = createVisualComponent({
-  render() {
-    const { openColumnsManager } = Uu5Tiles.useColumns();
-    return <UU5.Bricks.Button onClick={openColumnsManager}><UU5.Bricks.Icon icon="mdi-format-columns" /></UU5.Bricks.Button>;
-  }
-});
-
 const FlexTiles = createVisualComponent({
   ...STATICS,
 
@@ -65,20 +58,6 @@ const FlexTiles = createVisualComponent({
       handlerMap
     } = dataListResult;
     let total = data ? data.length : 0;
-
-    // let [columns, setColumns] = useState(props.columns);
-    // useEffect(() => {
-    //   const newColumns = [...columns];
-    //   newColumns.push({
-    //     key: "controls",
-    //     cell: () => null,
-    //     header: <WithColumnsContextButton />,
-    //     label: { en: "Controls", cs: "Ovládací prvky" },
-    //     width: 32,
-    //     fixed: "right"
-    //   })
-    //   setColumns(newColumns)
-    // },[]);
 
     //reloading start
     let [tick, setTick] = useState(0);
@@ -154,17 +133,15 @@ const FlexTiles = createVisualComponent({
     //@@viewOn:render
     return (
       <Uu5Tiles.ColumnsProvider initialColumns={props.columns}>
-        <Uu5Tiles.ControllerProvider data={data || []} filters={props.filters}
+        <Uu5Tiles.ControllerProvider selectable data={data || []} filters={props.filters}
                                      sorters={props.sorters}
                                      onChangeFilters={changeFiltersAndSorters}
                                      onChangeSorters={changeFiltersAndSorters}>
-          <Uu5Tiles.FilterBar/>
-          <Uu5Tiles.SorterBar initialDisplayed/>
-          <Uu5Tiles.InfoBar/>
+          {props.filters && <Uu5Tiles.FilterBar/>}
+          {props.sorters && <Uu5Tiles.SorterBar initialDisplayed/>}
+          {props.bulk && <Uu5Tiles.BulkActionBar actions={props.bulk}  />}
           <Uu5Tiles.List
-            data={dataToRender}
             tile={props.tiles}
-            columns={props.columns}
           >
           </Uu5Tiles.List>
           <UU5.Bricks.Pagination
