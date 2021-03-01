@@ -38,10 +38,10 @@ export const Joke = createComponent({
         <UU5.BlockLayout.Block
         >
           <UU5.BlockLayout.Row weight="primary" ellipses>
-            {data.name}
+            {data.data.name}
           </UU5.BlockLayout.Row>
           <UU5.BlockLayout.Row>
-            {data.text}
+            {data.data.text}
           </UU5.BlockLayout.Row>
         </UU5.BlockLayout.Block>
       </UU5.BlockLayout.Tile>)

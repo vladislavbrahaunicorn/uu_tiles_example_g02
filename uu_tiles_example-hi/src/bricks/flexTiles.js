@@ -27,6 +27,13 @@ const STATICS = {
   //@@viewOff:statics
 };
 
+const WithColumnsContextButton = createVisualComponent({
+  render() {
+    const { openColumnsManager } = Uu5Tiles.useColumns();
+    return <UU5.Bricks.Button onClick={openColumnsManager}><UU5.Bricks.Icon icon="mdi-format-columns" /></UU5.Bricks.Button>;
+  }
+});
+
 const FlexTiles = createVisualComponent({
   ...STATICS,
 
@@ -59,6 +66,20 @@ const FlexTiles = createVisualComponent({
     } = dataListResult;
     let total = data ? data.length : 0;
 
+    // let [columns, setColumns] = useState(props.columns);
+    // useEffect(() => {
+    //   const newColumns = [...columns];
+    //   newColumns.push({
+    //     key: "controls",
+    //     cell: () => null,
+    //     header: <WithColumnsContextButton />,
+    //     label: { en: "Controls", cs: "Ovládací prvky" },
+    //     width: 32,
+    //     fixed: "right"
+    //   })
+    //   setColumns(newColumns)
+    // },[]);
+
     //reloading start
     let [tick, setTick] = useState(0);
     let prevTick = usePreviousValue(tick);
@@ -76,6 +97,7 @@ const FlexTiles = createVisualComponent({
     //Filtering
     let [filtersAndSorters, setFiltersAndSorters] = useState({});
     let prevFiltersAndSorters = usePreviousValue(filtersAndSorters);
+
     let changeFiltersAndSorters = (data) => {
       console.log(data);
       setFiltersAndSorters(
@@ -90,8 +112,16 @@ const FlexTiles = createVisualComponent({
 
     //Paging start
     let [shownPageIndex, setShownPageIndex] = useState(0);
+    let prevShownPageIndex = usePreviousValue(shownPageIndex);
+
     let onPaginationChange = useCallback((pagination, newIndex) => {
-      setShownPageIndex(newIndex);
+      if (newIndex === "next") {
+        setShownPageIndex(prevShownPageIndex + 1);
+      } else if (newIndex === "prev") {
+        setShownPageIndex(prevShownPageIndex - 1);
+      } else {
+        setShownPageIndex(newIndex);
+      }
     }, []);
     //Paging end
 
@@ -100,7 +130,6 @@ const FlexTiles = createVisualComponent({
     let notLoadedItemsCount = !data ? pageSize : dataToRender.filter(
       it => it == null).length;
 
-    let prevShownPageIndex = usePreviousValue(shownPageIndex);
     useLayoutEffect(() => {
       if (
         (notLoadedItemsCount > 0 || tick !== prevTick ||
@@ -124,25 +153,28 @@ const FlexTiles = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <Uu5Tiles.ControllerProvider data={data || []} filters={props.filters}
-                                   sorters={props.sorters}
-                                   onChangeFilters={changeFiltersAndSorters}
-                                   onChangeSorters={changeFiltersAndSorters}>
-        <Uu5Tiles.FilterBar/>
-        <Uu5Tiles.SorterBar initialDisplayed/>
-        <Uu5Tiles.List
-          data={dataToRender}
-          tile={props.tiles}
-          columns={props.columns}
-        >
-        </Uu5Tiles.List>
-        <UU5.Bricks.Pagination
-          activeIndex={shownPageIndex}
-          items={new Array(Math.ceil(total / pageSize)).fill(null).map(
-            (_, i) => i + 1)}
-          onChange={onPaginationChange}
-        />
-      </Uu5Tiles.ControllerProvider>
+      <Uu5Tiles.ColumnsProvider initialColumns={props.columns}>
+        <Uu5Tiles.ControllerProvider data={data || []} filters={props.filters}
+                                     sorters={props.sorters}
+                                     onChangeFilters={changeFiltersAndSorters}
+                                     onChangeSorters={changeFiltersAndSorters}>
+          <Uu5Tiles.FilterBar/>
+          <Uu5Tiles.SorterBar initialDisplayed/>
+          <Uu5Tiles.InfoBar/>
+          <Uu5Tiles.List
+            data={dataToRender}
+            tile={props.tiles}
+            columns={props.columns}
+          >
+          </Uu5Tiles.List>
+          <UU5.Bricks.Pagination
+            activeIndex={shownPageIndex}
+            items={new Array(Math.ceil(total / pageSize)).fill(null).map(
+              (_, i) => i + 1)}
+            onChange={onPaginationChange}
+          />
+        </Uu5Tiles.ControllerProvider>
+      </Uu5Tiles.ColumnsProvider>
     );
     //@@viewOff:render
   }

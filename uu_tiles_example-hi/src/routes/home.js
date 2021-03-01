@@ -8,6 +8,7 @@ import Config from "./config/config.js";
 import FlexTiles from "../bricks/flexTiles";
 import Joke from "../bricks/joke";
 import Calls from "../calls";
+import Uu5Tiles from "uu5tilesg02";
 //@@viewOff:imports
 
 const STATICS = {
@@ -34,6 +35,12 @@ const CLASS_NAMES = {
     }
   `,
 };
+const WithColumnsContextButton = createVisualComponent({
+  render() {
+    const { openColumnsManager } = Uu5Tiles.useColumns();
+    return <UU5.Bricks.Button onClick={openColumnsManager}><UU5.Bricks.Icon icon="mdi-format-columns" /></UU5.Bricks.Button>;
+  }
+});
 
 export const Home = createVisualComponent({
   ...STATICS,
@@ -69,12 +76,27 @@ id2, id3'."/>
           }]}
           columns={[
             {
+              key: "name",
               cell: ({data}) => data.data.name,
-              header: {en: "Name", cs: "Název"}
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
             },
             {
+              key: "text",
               cell: ({data}) => data.data.text,
-              header: {en: "Text", cs: "Text"}
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
+            },
+            {
+              key: "controls",
+              cell: () => null,
+              header: <WithColumnsContextButton />,
+              label: { en: "Controls", cs: "Ovládací prvky" },
+              width: 32,
+              fixed: "right"
             }
           ]}
           tiles={Joke}
