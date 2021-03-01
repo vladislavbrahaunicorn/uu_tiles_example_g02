@@ -101,7 +101,7 @@ export const Home = createVisualComponent({
               key: "selected",
               cell: (data) => {
                 console.log(data);
-                return <UU5.Forms.Checkbox value={data.selected} onChange={data.toggleSelected} />
+                return <UU5.Forms.Checkbox inputWidth="30px" value={data.selected} onChange={data.toggleSelected} />
               },
               alwaysVisible: true,
               label:{en: "Selected", cs: "Vyber"},
@@ -111,6 +111,7 @@ export const Home = createVisualComponent({
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
               // alwaysVisible: true,
               // visible: false,
               // fixed: "left"

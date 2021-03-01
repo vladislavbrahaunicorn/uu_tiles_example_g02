@@ -141,6 +141,7 @@ const FlexTiles = createVisualComponent({
           {props.sorters && <Uu5Tiles.SorterBar initialDisplayed/>}
           {props.bulk && <Uu5Tiles.BulkActionBar actions={props.bulk}  />}
           <Uu5Tiles.List
+            rowPadding={"15px 0"}
             tile={props.tiles}
           >
           </Uu5Tiles.List>
