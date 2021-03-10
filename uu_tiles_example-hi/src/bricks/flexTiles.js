@@ -93,15 +93,15 @@ const FlexTiles = createVisualComponent({
     let [shownPageIndex, setShownPageIndex] = useState(0);
     let prevShownPageIndex = usePreviousValue(shownPageIndex);
 
-    let onPaginationChange = useCallback((pagination, newIndex) => {
+    let onPaginationChange = (pagination, newIndex) => {
       if (newIndex === "next") {
-        setShownPageIndex(prevShownPageIndex + 1);
+        setShownPageIndex(shownPageIndex + 1);
       } else if (newIndex === "prev") {
-        setShownPageIndex(prevShownPageIndex - 1);
+        setShownPageIndex(shownPageIndex - 1);
       } else {
         setShownPageIndex(newIndex);
       }
-    }, []);
+    };
     //Paging end
 
     let dataToRender = data ? data.slice(shownPageIndex * pageSize,
@@ -133,6 +133,7 @@ const FlexTiles = createVisualComponent({
     //@@viewOn:render
     return (
       <Uu5Tiles.ColumnsProvider initialColumns={props.columns}>
+        {JSON.stringify(shownPageIndex)}
         <Uu5Tiles.ControllerProvider selectable data={data || []} filters={props.filters}
                                      sorters={props.sorters}
                                      onChangeFilters={changeFiltersAndSorters}
