@@ -1,11 +1,10 @@
 # Pozadavky
 
-- načítat data ze serveru
-- sortování
-- filtrování
-- stránkování
-- výběr viditelných sloupečků
-- podpora reloadu (náš use-case je obnovení stránky co 10 vteřin -- pokud to vyřeším přes změnu stavu, zmizí mi stav, takže se vyresetují filtry)
+- načítat data ze serveru :heavy_check_mark:
+- sortování :heavy_check_mark:
+- filtrování :heavy_check_mark:
+- stránkování :heavy_check_mark:
+- podpora reloadu :heavy_check_mark:
 
 Stěžení komponenta projektu
 https://github.com/lerix/uu_tiles_example_g02/blob/main/uu_tiles_example-hi/src/bricks/flexTiles.js
