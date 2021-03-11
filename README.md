@@ -4,6 +4,7 @@
 - sortování :heavy_check_mark:
 - filtrování :heavy_check_mark:
 - stránkování :heavy_check_mark:
+- výběr viditelných sloupečků :heavy_check_mark:
 - podpora reloadu :heavy_check_mark:
 
 Stěžení komponenta projektu
