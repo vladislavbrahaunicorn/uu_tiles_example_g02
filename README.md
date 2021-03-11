@@ -8,7 +8,7 @@
 - podpora reloadu :heavy_check_mark:
 - bulk akce :heavy_check_mark:
 
-Stěžení komponenta projektu
+Stěžejní komponenta projektu
 https://github.com/lerix/uu_tiles_example_g02/blob/main/uu_tiles_example-hi/src/bricks/flexTiles.js
 
 
