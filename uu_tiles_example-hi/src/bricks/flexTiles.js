@@ -15,8 +15,6 @@ import {
   useEffect
 } from "uu5g04-hooks";
 import "uu_plus4u5g01-bricks";
-import Calls from "../calls";
-import Joke from "./joke";
 import Uu5Tiles from "uu5tilesg02";
 import Config from "../routes/config/config";
 //@@viewOff:imports
@@ -31,9 +29,24 @@ const FlexTiles = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
+  propTypes: {
+    load: UU5.PropTypes.func.isRequired,
+    createItem: UU5.PropTypes.func,
+    loadItem: UU5.PropTypes.func,
+    updateItem: UU5.PropTypes.func,
+    deleteItem: UU5.PropTypes.func,
+    pageSize: UU5.PropTypes.number,
+    reload: UU5.PropTypes.number,
+    columns: UU5.PropTypes.array,
+    filters: UU5.PropTypes.array,
+    sorters: UU5.PropTypes.array,
+    bulk: UU5.PropTypes.array,
+    tiles: UU5.PropTypes.node,
+  },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
+  defaultProps: {},
   //@@viewOff:defaultProps
   render(props) {
     let pageSize = props.pageSize || 8;
@@ -133,14 +146,14 @@ const FlexTiles = createVisualComponent({
     //@@viewOn:render
     return (
       <Uu5Tiles.ColumnsProvider initialColumns={props.columns}>
-        {JSON.stringify(shownPageIndex)}
-        <Uu5Tiles.ControllerProvider selectable data={data || []} filters={props.filters}
+        <Uu5Tiles.ControllerProvider selectable data={data || []}
+                                     filters={props.filters}
                                      sorters={props.sorters}
                                      onChangeFilters={changeFiltersAndSorters}
                                      onChangeSorters={changeFiltersAndSorters}>
           {props.filters && <Uu5Tiles.FilterBar/>}
           {props.sorters && <Uu5Tiles.SorterBar initialDisplayed/>}
-          {props.bulk && <Uu5Tiles.BulkActionBar actions={props.bulk}  />}
+          {props.bulk && <Uu5Tiles.BulkActionBar actions={props.bulk}/>}
           <Uu5Tiles.List
             rowPadding={"15px 0"}
             tile={props.tiles}
