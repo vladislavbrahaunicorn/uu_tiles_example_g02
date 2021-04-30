@@ -1,3 +1,9 @@
+
+# Problémy
+
+ - Hlavička tabulky se neposouvá s obsahem:
+
+![Header issue](https://raw.githubusercontent.com/vladislavbrahaunicorn/uu_tiles_example_g02/4872a0df95f323d99011dde05a57ed1e97409710/Issue.gif)
 # Pozadavky
 
 - načítat data ze serveru :heavy_check_mark:
