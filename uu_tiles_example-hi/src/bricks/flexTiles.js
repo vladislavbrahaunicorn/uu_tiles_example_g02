@@ -146,7 +146,7 @@ const FlexTiles = createVisualComponent({
     //@@viewOn:render
     return (
       <Uu5Tiles.ColumnsProvider initialColumns={props.columns}>
-        <Uu5Tiles.ControllerProvider selectable data={data || []}
+        <Uu5Tiles.ControllerProvider selectable data={dataToRender || []}
                                      filters={props.filters}
                                      sorters={props.sorters}
                                      onChangeFilters={changeFiltersAndSorters}

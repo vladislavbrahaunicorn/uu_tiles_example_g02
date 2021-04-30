@@ -115,6 +115,97 @@ export const Home = createVisualComponent({
               // alwaysVisible: true,
               // visible: false,
               // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },           {
+              key: "name",
+              cell: ({data}) => data.data.name,
+              header: {en: "Name", cs: "Název"},
+              label: {en: "Name", cs: "Název"},
+              sorterKey: "name"
+              // alwaysVisible: true,
+              // visible: false,
+              // fixed: "left"
+            },
+            {
+              key: "text",
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
+            },
+            {
+              key: "text",
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
+            },
+            {
+              key: "text",
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
+            },            {
+              key: "text",
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
+            },            {
+              key: "text",
+              cell: ({data}) => data.data.text,
+              header: {en: "Text", cs: "Text"},
+              label: {en: "Text", cs: "Text"}
             },
             {
               key: "text",
