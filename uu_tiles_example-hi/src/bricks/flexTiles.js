@@ -157,6 +157,7 @@ const FlexTiles = createVisualComponent({
           <Uu5Tiles.List
             rowPadding={"15px 0"}
             tile={props.tiles}
+            key={data && data.length ? "noData" : "withData"}
           >
           </Uu5Tiles.List>
           <UU5.Bricks.Pagination
