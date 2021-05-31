@@ -107,7 +107,7 @@ export const Home = createVisualComponent({
               label:{en: "Selected", cs: "Vyber"},
             },
             {
-              key: "name",
+              key: "name1",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -116,7 +116,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name2",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -125,7 +125,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name3",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -134,7 +134,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name4",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -143,7 +143,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name5",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -152,7 +152,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name6",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -161,7 +161,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name7",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -170,7 +170,7 @@ export const Home = createVisualComponent({
               // visible: false,
               // fixed: "left"
             },           {
-              key: "name",
+              key: "name8",
               cell: ({data}) => data.data.name,
               header: {en: "Name", cs: "Název"},
               label: {en: "Name", cs: "Název"},
@@ -180,35 +180,35 @@ export const Home = createVisualComponent({
               // fixed: "left"
             },
             {
-              key: "text",
+              key: "text1",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
-              key: "text",
+              key: "text2",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
-              key: "text",
+              key: "text3",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },            {
-              key: "text",
+              key: "text4",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },            {
-              key: "text",
+              key: "text5",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
-              key: "text",
+              key: "text6",
               cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
