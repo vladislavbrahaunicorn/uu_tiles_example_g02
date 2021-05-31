@@ -41,7 +41,7 @@ const FlexTiles = createVisualComponent({
     filters: UU5.PropTypes.array,
     sorters: UU5.PropTypes.array,
     bulk: UU5.PropTypes.array,
-    tiles: UU5.PropTypes.node,
+    tiles: UU5.PropTypes.func,
   },
   //@@viewOff:propTypes
 

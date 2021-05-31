@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import Config from "../config/config";
 //@@viewOff:imports
 
@@ -10,7 +10,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const Joke = createComponent({
+export const Joke = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
