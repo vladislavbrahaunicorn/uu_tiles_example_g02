@@ -181,35 +181,35 @@ export const Home = createVisualComponent({
             },
             {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },            {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },            {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
             {
               key: "text",
-              cell: ({data}) => data.data.text,
+              cell: ({data}) => data.data.text ?? null,
               header: {en: "Text", cs: "Text"},
               label: {en: "Text", cs: "Text"}
             },
