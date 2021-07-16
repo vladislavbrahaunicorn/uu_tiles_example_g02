@@ -225,6 +225,16 @@ export const Home = createVisualComponent({
           tiles={Joke}
           load={Calls.load}
           reload={10000}
+          onTableFiltersAndSortersChange={(data) => console.log("filters and sorters has been changed to " + JSON.stringify(data))}
+          initialTableParams={{
+            "filterMap": [],
+            "sorterMap": [
+              {
+                "key": "name",
+                "value": true
+              }
+            ]
+          }}
         />
       </div>
     );

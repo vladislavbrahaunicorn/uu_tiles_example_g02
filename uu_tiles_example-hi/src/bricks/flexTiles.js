@@ -42,6 +42,8 @@ const FlexTiles = createVisualComponent({
     sorters: UU5.PropTypes.array,
     bulk: UU5.PropTypes.array,
     tiles: UU5.PropTypes.func,
+    onTableFiltersAndSortersChange: UU5.PropTypes.func,
+    initialTableParams: UU5.PropTypes.object,  //used later for transformation
   },
   //@@viewOff:propTypes
 
@@ -50,6 +52,9 @@ const FlexTiles = createVisualComponent({
   //@@viewOff:defaultProps
   render(props) {
     let pageSize = props.pageSize || 8;
+
+    let [initialFiltersAndSorters, setInitialFiltersAndSorters] = useState(props.initialTableParams);
+
     const dataListResult = useDataList({
       handlerMap: {
         load: props.load,
@@ -92,13 +97,19 @@ const FlexTiles = createVisualComponent({
 
     let changeFiltersAndSorters = (data) => {
       console.log(data);
+      let changedFiltersAndSorters = {
+        filterMap: data.activeFilters.map(
+          item => ({key: item.key, value: item.value})),
+        sorterMap: data.activeSorters.map(
+          item => ({key: item.key, value: item.ascending}))
+      };
+
+
       setFiltersAndSorters(
-        {
-          filterMap: data.activeFilters.map(
-            item => ({key: item.key, value: item.value})),
-          sorterMap: data.activeSorters.map(
-            item => ({key: item.key, value: item.ascending}))
-        })
+        changedFiltersAndSorters)
+      if (props.onTableFiltersAndSortersChange) {
+        props.onTableFiltersAndSortersChange(changedFiltersAndSorters);
+      }
     }
     //Filtering end
 
@@ -150,7 +161,10 @@ const FlexTiles = createVisualComponent({
                                      filters={props.filters}
                                      sorters={props.sorters}
                                      onChangeFilters={changeFiltersAndSorters}
-                                     onChangeSorters={changeFiltersAndSorters}>
+                                     onChangeSorters={changeFiltersAndSorters}
+                                     initialActiveFilters={initialFiltersAndSorters?.filterMap}
+                                     initialActiveSorters={initialFiltersAndSorters?.sorterMap}
+        >
           {props.filters && <Uu5Tiles.FilterBar/>}
           {props.sorters && <Uu5Tiles.SorterBar initialDisplayed/>}
           {props.bulk && <Uu5Tiles.BulkActionBar actions={props.bulk}/>}
